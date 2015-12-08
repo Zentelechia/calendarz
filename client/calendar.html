@@ -1,0 +1,48 @@
+<head>
+  <title>calendar</title>
+</head>
+
+<body>
+  <h1>Мой путь</h1>
+  {{> calendar}}
+  {{> tasks}}
+</body>
+<template name="calendar">
+<table id="calendar">
+<tr>
+	{{#each days}}
+<th>
+		{{this}}
+</th>
+	{{/each}}
+</tr>
+<tr>
+		{{#each items}}
+
+<td date={{this.date}}>
+			{{this.date}}
+
+			{{#each this.items}}
+				<div id="{{this._id}}" class="agenda_item">
+					{{this.name}}
+				<img src="../trash.png" class="delete"></div>
+			{{/each}}
+
+</td>
+
+		{{/each}}
+</tr>
+</table>	
+</template>
+<template name="tasks">
+<div id="tasks">
+	<input id="say"><br>
+	{{#each tasks}}
+		<div id="{{this._id}}" class="task {{#if this.planned}}planned{{/if}}">
+		<span class="fraction">{{this.fraction}}</span>/<span class="duration">{{this.duration}}</span>
+		{{this.text}}
+		<img src="../trash.png" class="delete">
+		</div>
+	{{/each}}
+</div>
+</template>  

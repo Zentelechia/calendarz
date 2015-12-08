@@ -1,0 +1,71 @@
+html, body {
+	background-image: url(bg.jpg);
+}
+#calendar {
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	min-height: 200px;
+
+}
+#calendar th {
+	background-color: #666;
+	color:	#FFF;
+	border: 1px solid grey;
+	width: 14%;
+	text-align: center;
+	align: center;
+	vertical-align: top;
+	height:  20px;
+	}
+#calendar td {
+	background-color: white;
+	border: 1px solid grey;
+	width: 14%;
+	text-align: center;
+	align: center;
+	vertical-align: top;
+	min-height: 200px;
+}
+.agenda_item {
+background-color: #BBB;
+margin: 3px;
+position: relative;
+}
+#tasks div {
+	background-color: #EEE;
+	padding: 3px;
+	border: 1px solid black;
+	float: left;
+	margin: 3px;
+}
+
+.planned {
+	background-color: lightgreen !important;
+}
+.delete {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	display: none;
+
+}
+.agenda_item:hover .delete {
+	display: block;
+}
+.task {
+	position: relative;
+}
+.task:hover .delete {
+	display: block;
+}
+.duration {
+	background-color: #888;
+	padding: 2px;
+
+}
+.fraction {
+	background-color: #888;
+	padding: 2px;
+	
+}
