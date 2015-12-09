@@ -14,17 +14,6 @@ Template.calendar.events({
 	'click img' : function(e){
 		console.log($(e.target).parent());
 		agenda.remove($(e.currentTarget).parent()[0].id);
-		$(".agenda_item").draggable();
-		$("#calendar td").droppable({
-		drop: function(e){
-			el=$(".ui-draggable-dragging");
-			console.log(Session.get("task_id"));
-			tasks.update(Session.get("task_id"),{$set : {planned : true}});
-			agenda.insert({
-			name:	el.text(),
-			date:	$(e.target).attr('date')})
-			}
-	});
 	}
 });
 Template.calendar.rendered=function(){
@@ -39,12 +28,7 @@ Template.tasks.helpers({
 });
 
 Template.tasks.rendered=function(){
-	$(".task").draggable({
-		helper : "clone",
-		start: function(event,ui){
-        	    Session.set("task_id", $(this).attr('id'));
-	        }
-	});
+
 }
 Template.tasks.events({
 	'keyup #say ': function(e){
@@ -55,5 +39,23 @@ Template.tasks.events({
 	},
 	'click img' : function(e){
 		tasks.remove($(e.currentTarget).parent()[0].id);
+				$(".agenda_item").draggable();
+		$("#calendar td").droppable({
+		drop: function(e){
+			el=$(".ui-draggable-dragging");
+			console.log(Session.get("task_id"));
+			tasks.update(Session.get("task_id"),{$set : {planned : true}});
+			agenda.insert({
+			name:	el.text(),
+			date:	$(e.target).attr('date')})
+			}
+		});
+		$(".task").draggable({
+		helper : "clone",
+		start: function(event,ui){
+        	    Session.set("task_id", $(this).attr('id'));
+	        }
+	});
+
 	}
 });
