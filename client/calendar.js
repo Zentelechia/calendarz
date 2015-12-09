@@ -14,11 +14,8 @@ Template.calendar.events({
 	'click img' : function(e){
 		console.log($(e.target).parent());
 		agenda.remove($(e.currentTarget).parent()[0].id);
-	}
-});
-Template.calendar.rendered=function(){
-	$(".agenda_item").draggable();
-	$("#calendar td").droppable({
+		$(".agenda_item").draggable();
+		$("#calendar td").droppable({
 		drop: function(e){
 			el=$(".ui-draggable-dragging");
 			console.log(Session.get("task_id"));
@@ -28,6 +25,10 @@ Template.calendar.rendered=function(){
 			date:	$(e.target).attr('date')})
 			}
 	});
+	}
+});
+Template.calendar.rendered=function(){
+
 }
 
 
